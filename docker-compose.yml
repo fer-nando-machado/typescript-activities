@@ -9,6 +9,6 @@ services:
     build:
       context: ./react-frontend
     ports:
-      - "8081:8080"
+      - "8081:4173"
     depends_on:
       - node-backend
