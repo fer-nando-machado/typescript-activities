@@ -1,13 +1,15 @@
 services:
   node-backend:
     build:
-      context: ./node-backend
+      context: .
+      dockerfile: ./node-backend/Dockerfile
     ports:
       - "8080:8080"
 
   react-frontend:
     build:
-      context: ./react-frontend
+      context: .
+      dockerfile: ./react-frontend/Dockerfile
     ports:
       - "8081:4173"
     depends_on:

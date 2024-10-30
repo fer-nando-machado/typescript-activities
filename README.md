@@ -2,7 +2,7 @@
 
 Run both services with:
 
-```docker-compose up --build```
+`docker-compose up --build`
 
 This command will start:
 

@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
-import { fetchMessage } from "./services/message";
+import Activities from "./components/Activity";
+import logo from "./assets/logo.png";
+import "./App.scss";
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    fetchMessage().then(setMessage);
-  }, []);
-
-  return <div>Hello: {message}.</div>;
+  return (
+    <div id="App">
+      <img src={logo} />
+      <h1>Activities</h1>
+      <Activities />
+    </div>
+  );
 }
 
 export default App;

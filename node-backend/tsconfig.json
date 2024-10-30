@@ -6,12 +6,11 @@
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
-    "baseUrl": ".",
-    "paths": {
-      "@api/*": ["./api/*"],
-      "@core/*": ["./core/*"],
-      "@data/*": ["./data/*"],
-      "@types/*": ["../types/*"]
-    }
-  }
+    "resolveJsonModule": true,
+    "baseUrl": "."
+  },
+  "include": ["src", "../types/*"]
+
+  //"include": ["src/**/*", "../types/**/*"],
+  //"include": ["src/**/*", "../types/index.d.ts"]
 }
