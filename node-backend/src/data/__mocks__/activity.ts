@@ -1,7 +1,7 @@
 export const fetchActivities = jest.fn(() => [
   {
     id: 1,
-    title: "Mock City Tour",
+    title: "City Tour",
     price: 100,
     currency: "$",
     rating: 4,
@@ -10,7 +10,7 @@ export const fetchActivities = jest.fn(() => [
   },
   {
     id: 2,
-    title: "Mock Museum Ticket",
+    title: "Museum Ticket",
     price: 20,
     currency: "¥",
     rating: 4.5,
@@ -19,7 +19,7 @@ export const fetchActivities = jest.fn(() => [
   },
   {
     id: 3,
-    title: "Mock Nature Tour",
+    title: "Nature Tour",
     price: 150,
     currency: "€",
     rating: 5,

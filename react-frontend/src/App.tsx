@@ -5,7 +5,7 @@ import "./App.scss";
 function App() {
   return (
     <div id="App">
-      <img src={logo} />
+      <img src={logo} alt="Get Your Guide" />
       <h1>Activities</h1>
       <Activities />
     </div>

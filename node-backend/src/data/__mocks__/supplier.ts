@@ -1,7 +1,7 @@
 export const fetchSuppliers = jest.fn(() => [
   {
     id: 100,
-    name: "Mock Jackie Chan",
+    name: "Jackie Chan",
     address: "789 Main St",
     zip: "10000",
     city: "Hong Kong",
@@ -9,7 +9,7 @@ export const fetchSuppliers = jest.fn(() => [
   },
   {
     id: 200,
-    name: "Mock Bruce Lee",
+    name: "Bruce Lee",
     address: "123 Long Rd",
     zip: "20000",
     city: "San Francisco",

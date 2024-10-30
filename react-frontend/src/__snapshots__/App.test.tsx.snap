@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App > renders default App home 1`] = `
+<div
+  id="App"
+>
+  <img
+    alt="Get Your Guide"
+    src="/src/assets/logo.png"
+  />
+  <h1>
+    Activities
+  </h1>
+  <div
+    class="activities__container"
+  />
+</div>
+`;
