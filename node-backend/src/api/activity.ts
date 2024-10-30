@@ -5,7 +5,7 @@ import { Activity, ActivityDetail } from "../../../types/activity";
 const activityRouter = Router();
 activityRouter.get(
   "/activities",
-  async (req: Request, res: Response<ActivityDetail[] | { error: string }>) => {
+  async (req: Request, res: Response<ActivityDetail[] | string>) => {
     try {
       const filter: Partial<Activity> = {};
       if (req.query.title) {
@@ -14,7 +14,7 @@ activityRouter.get(
       const activities = getActivities(filter);
       res.status(200).json(activities);
     } catch (error: any) {
-      res.status(500).json({ error: error.message });
+      res.status(500).json(error.message);
     }
   }
 );

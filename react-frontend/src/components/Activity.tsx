@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { ActivityDetail } from "../../../types/activity";
-import { findActivities } from "../services/activity";
+import { fetchActivities } from "../services/activity";
 import "./Activity.scss";
 
 const Activities: React.FC = () => {
   const [activities, setActivities] = useState<ActivityDetail[]>([]);
   const [title, setTitle] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    findActivities().then(setActivities);
+    fetchActivities().then(setActivities).catch(setError);
   }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    findActivities({ title }).then(setActivities);
+    fetchActivities({ title }).then(setActivities);
   };
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="activity-title">
-          <strong>Title:</strong>
-        </label>
         <input
           type="text"
-          id="activity-title"
           name="title"
           placeholder="Berlin Tour Museum Pass Ticket ..."
           value={title}
@@ -34,7 +31,12 @@ const Activities: React.FC = () => {
       </form>
 
       <div className="activities__container">
-        {activities.length === 0 ? (
+        {error ? (
+          <>
+            Error while fetching activities. Please try again later.
+            <small>{error.toString()}</small>
+          </>
+        ) : activities.length === 0 ? (
           <>No activities found. Please refine your search and try again.</>
         ) : (
           activities.map((activity) => (

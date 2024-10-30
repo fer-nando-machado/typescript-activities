@@ -64,6 +64,6 @@ describe("GET /activities", () => {
     });
 
     const response = await request(app).get("/activities").expect(500);
-    expect(response.body).toEqual({ error: "Internal database error." });
+    expect(response.body).toEqual("Internal database error.");
   });
 });

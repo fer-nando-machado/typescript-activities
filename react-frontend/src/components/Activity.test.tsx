@@ -2,48 +2,19 @@ import "@testing-library/react";
 import "@testing-library/jest-dom";
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { render, waitFor } from "@testing-library/react";
-import Activity from "./Activity";
+import { ACTIVITY_MOCK } from "../services/__mocks__/activity";
+import * as service from "../services/activity";
+import Activities from "./Activity";
 
-describe("Activity", () => {
+describe("Activities", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  it("renders activities", async () => {
-    global.fetch = vi.fn().mockResolvedValueOnce({
-      json: async () => [
-        {
-          id: 1,
-          title: "City Tour",
-          price: 100,
-          currency: "$",
-          rating: 4,
-          specialOffer: false,
-          supplierId: 100,
-        },
-        {
-          id: 2,
-          title: "Museum Ticket",
-          price: 20,
-          currency: "¥",
-          rating: 4.5,
-          specialOffer: true,
-          supplierId: 200,
-        },
-        {
-          id: 3,
-          title: "Nature Tour",
-          price: 150,
-          currency: "€",
-          rating: 5,
-          specialOffer: true,
-          supplierId: 100,
-        },
-      ],
-    });
+  it("renders fetched activities", async () => {
+    vi.spyOn(service, "fetchActivities").mockResolvedValueOnce(ACTIVITY_MOCK);
 
-    const { getByText } = render(<Activity />);
-
+    const { getByText } = render(<Activities />);
     await waitFor(() => {
       expect(getByText(/City Tour/i)).toBeInTheDocument();
       expect(getByText(/Museum Ticket/i)).toBeInTheDocument();
@@ -51,15 +22,24 @@ describe("Activity", () => {
     });
   });
 
-  it("renders warning message when no activities are found", async () => {
-    global.fetch = vi.fn().mockResolvedValueOnce({
-      json: async () => [],
-    });
+  it("renders warning message when activities are not found", async () => {
+    vi.spyOn(service, "fetchActivities").mockResolvedValueOnce([]);
 
-    const { getByText } = render(<Activity />);
-
+    const { getByText } = render(<Activities />);
     await waitFor(() => {
       expect(getByText(/No activities found/i)).toBeInTheDocument();
+    });
+  });
+
+  it("renders error message when fetching fails", async () => {
+    vi.spyOn(service, "fetchActivities").mockRejectedValueOnce(
+      new Error("Internal Mock Error")
+    );
+
+    const { getByText } = render(<Activities />);
+    await waitFor(() => {
+      expect(getByText(/Error while fetching activities/i)).toBeInTheDocument();
+      expect(getByText(/Internal Mock Error/i)).toBeInTheDocument();
     });
   });
 });
