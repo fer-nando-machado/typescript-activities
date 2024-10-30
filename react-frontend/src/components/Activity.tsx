@@ -4,7 +4,7 @@ import { fetchActivities } from "../services/activity";
 import "./Activity.scss";
 
 const Activities: React.FC = () => {
-  const [activities, setActivities] = useState<ActivityDetail[]>([]);
+  const [activities, setActivities] = useState<ActivityDetail[]>();
   const [title, setTitle] = useState("");
   const [error, setError] = useState("");
 
@@ -36,14 +36,17 @@ const Activities: React.FC = () => {
 
       <div className="activities__container">
         {error ? (
-          <span>
-            We had a problem while looking for activities. Please try again
-            later. <pre>{error.toString()}</pre>
-          </span>
+          <>
+            We had a problem while looking for activities. <br />
+            Please try again later.
+          </>
+        ) : !activities ? (
+          <>Looking for activities...</>
         ) : activities.length === 0 ? (
-          <span>
-            No activities found. Please refine your search and try again.
-          </span>
+          <>
+            No activities found. <br />
+            Please refine your search and try again.
+          </>
         ) : (
           activities.map((activity) => (
             <div key={activity.id} className="activities__activity">

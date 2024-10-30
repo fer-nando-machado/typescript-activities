@@ -22,6 +22,11 @@ describe("Activities Component", () => {
     });
   });
 
+  it("renders loading message while fetching", async () => {
+    const { getByText } = render(<Activities />);
+    expect(getByText(/Looking for activities/)).toBeInTheDocument();
+  });
+
   it("renders warning message when activities are not found", async () => {
     vi.spyOn(service, "fetchActivities").mockResolvedValueOnce([]);
 
@@ -32,14 +37,11 @@ describe("Activities Component", () => {
   });
 
   it("renders error message when fetching fails", async () => {
-    vi.spyOn(service, "fetchActivities").mockRejectedValueOnce(
-      new Error("Internal Mock Error")
-    );
+    vi.spyOn(service, "fetchActivities").mockRejectedValueOnce(new Error());
 
     const { getByText } = render(<Activities />);
     await waitFor(() => {
       expect(getByText(/We had a problem while looking/)).toBeInTheDocument();
-      expect(getByText(/Internal Mock Error/)).toBeInTheDocument();
     });
   });
 });
