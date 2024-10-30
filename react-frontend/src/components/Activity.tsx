@@ -23,7 +23,7 @@ const Activities: React.FC = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="activities__form">
         <input
           type="text"
           name="title"
@@ -55,7 +55,9 @@ const Activities: React.FC = () => {
                 {activity.currency}
                 {activity.price}
                 {activity.specialOffer && (
-                  <em className="activities__specialOffer">Special Offer 🔖</em>
+                  <em className="activities__activity__specialOffer">
+                    Special Offer 🔖
+                  </em>
                 )}
               </data>
               <data value={activity.rating} aria-label="Rating">
