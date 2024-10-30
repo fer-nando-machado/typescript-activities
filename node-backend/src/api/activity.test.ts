@@ -6,58 +6,8 @@ const app = express();
 app.use(express.json());
 app.use("/", activityRouter);
 
-jest.mock("../data/activity", () => ({
-  fetchActivities: jest.fn(() => [
-    {
-      id: 1,
-      title: "City Tour",
-      price: 100,
-      currency: "$",
-      rating: 4,
-      specialOffer: false,
-      supplierId: 100,
-    },
-    {
-      id: 2,
-      title: "Museum Ticket",
-      price: 20,
-      currency: "¥",
-      rating: 4.5,
-      specialOffer: true,
-      supplierId: 200,
-    },
-    {
-      id: 3,
-      title: "Nature Tour",
-      price: 150,
-      currency: "€",
-      rating: 5,
-      specialOffer: true,
-      supplierId: 100,
-    },
-  ]),
-}));
-
-jest.mock("../data/supplier", () => ({
-  fetchSuppliers: jest.fn(() => [
-    {
-      id: 100,
-      name: "Jackie Chan",
-      address: "789 Main St",
-      zip: "10000",
-      city: "Hong Kong",
-      country: "China",
-    },
-    {
-      id: 200,
-      name: "Bruce Lee",
-      address: "123 Long Rd",
-      zip: "20000",
-      city: "San Francisco",
-      country: "USA",
-    },
-  ]),
-}));
+jest.mock("../data/activity");
+jest.mock("../data/supplier");
 
 describe("GET /activities", () => {
   it("should return all activities", async () => {
@@ -70,13 +20,19 @@ describe("GET /activities", () => {
           id: 1,
           supplier: expect.objectContaining({ id: 100 }),
         }),
-        expect.objectContaining({ id: 2 }),
-        expect.objectContaining({ id: 3 }),
+        expect.objectContaining({
+          id: 2,
+          supplier: expect.objectContaining({ id: 200 }),
+        }),
+        expect.objectContaining({
+          id: 3,
+          supplier: expect.objectContaining({ id: 100 }),
+        }),
       ])
     );
   });
 
-  it("should return filtered activities if matches title", async () => {
+  it("should return filtered activities by matching title", async () => {
     const response = await request(app)
       .get("/activities")
       .query({ title: "Tour" })
@@ -91,7 +47,7 @@ describe("GET /activities", () => {
     );
   });
 
-  it("should return empty activities if unmatches title", async () => {
+  it("should return empty activities if nothing matches title", async () => {
     const response = await request(app)
       .get("/activities")
       .query({ title: "Horses" })
