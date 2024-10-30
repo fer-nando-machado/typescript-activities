@@ -10,6 +10,6 @@ export interface Activity {
   supplierId: number;
 }
 
-export interface ActivityWithSupplier extends Activity {
+export interface ActivityDetail extends Activity {
   supplier?: Supplier;
 }

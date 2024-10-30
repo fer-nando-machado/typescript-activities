@@ -1,4 +1,4 @@
-import { Activity, ActivityWithSupplier } from "../../../types/activity";
+import { Activity, ActivityDetail } from "../../../types/activity";
 import { API_URL } from "../config";
 
 export const findActivities = async (filter: Partial<Activity> = {}) => {
@@ -6,10 +6,8 @@ export const findActivities = async (filter: Partial<Activity> = {}) => {
   if (filter.title) {
     queryParams.append("title", filter.title);
   }
-  console.log(filter);
 
   const endpoint = `${API_URL}/activities?${queryParams.toString()}`;
-  console.log(endpoint);
   const response = await fetch(endpoint, {
     method: "GET",
     headers: {
@@ -18,7 +16,5 @@ export const findActivities = async (filter: Partial<Activity> = {}) => {
     },
   });
   const json = await response.json();
-  console.log(json);
-
-  return json as ActivityWithSupplier[];
+  return json as ActivityDetail[];
 };

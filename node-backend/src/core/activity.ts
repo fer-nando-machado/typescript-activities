@@ -1,16 +1,10 @@
-import { Activity, ActivityWithSupplier } from "../../../types/activity";
+import { Activity, ActivityDetail } from "../../../types/activity";
 import { fetchActivities } from "../data/activity";
 import { fetchSuppliers } from "../data/supplier";
 
-const filterByTitle = (activity: Activity, title?: string) => {
-  return title
-    ? activity.title.toLowerCase().includes(title.toLowerCase())
-    : true;
-};
-
 export const getActivities = (
   filter: Partial<Activity> = {}
-): ActivityWithSupplier[] => {
+): ActivityDetail[] => {
   const suppliers = fetchSuppliers();
   const activities = fetchActivities();
 
@@ -20,4 +14,10 @@ export const getActivities = (
       const supplier = suppliers.find((s) => s.id === activity.supplierId);
       return { ...activity, supplier };
     });
+};
+
+const filterByTitle = (activity: Activity, title?: string) => {
+  return title
+    ? activity.title.toLowerCase().includes(title.toLowerCase())
+    : true;
 };

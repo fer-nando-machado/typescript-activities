@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { ActivityDetail } from "../../../types/activity";
 import { findActivities } from "../services/activity";
 import "./Activity.scss";
-import { ActivityWithSupplier } from "../../../types/activity";
 
 const Activities: React.FC = () => {
-  const [activities, setActivities] = useState<ActivityWithSupplier[]>([]);
+  const [activities, setActivities] = useState<ActivityDetail[]>([]);
   const [title, setTitle] = useState("");
 
   useEffect(() => {
