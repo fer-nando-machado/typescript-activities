@@ -10,8 +10,7 @@ export const fetchActivities = async (filter: Partial<Activity> = {}) => {
   const endpoint = `${API_URL}/activities?${queryParams.toString()}`;
   const response = await fetch(endpoint, GET_JSON);
   if (!response.ok) {
-    const message = await response.json();
-    throw new Error(`Error fetching activities: ${message}`);
+    throw new Error(await response.json());
   }
   const json = await response.json();
   return json as ActivityDetail[];

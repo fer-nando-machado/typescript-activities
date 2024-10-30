@@ -6,7 +6,7 @@ import { ACTIVITY_MOCK } from "../services/__mocks__/activity";
 import * as service from "../services/activity";
 import Activities from "./Activity";
 
-describe("Activities", () => {
+describe("Activities Component", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -16,9 +16,9 @@ describe("Activities", () => {
 
     const { getByText } = render(<Activities />);
     await waitFor(() => {
-      expect(getByText(/City Tour/i)).toBeInTheDocument();
-      expect(getByText(/Museum Ticket/i)).toBeInTheDocument();
-      expect(getByText(/Nature Tour/i)).toBeInTheDocument();
+      expect(getByText(/City Tour/)).toBeInTheDocument();
+      expect(getByText(/Museum Ticket/)).toBeInTheDocument();
+      expect(getByText(/Nature Tour/)).toBeInTheDocument();
     });
   });
 
@@ -27,7 +27,7 @@ describe("Activities", () => {
 
     const { getByText } = render(<Activities />);
     await waitFor(() => {
-      expect(getByText(/No activities found/i)).toBeInTheDocument();
+      expect(getByText(/No activities found/)).toBeInTheDocument();
     });
   });
 
@@ -38,8 +38,8 @@ describe("Activities", () => {
 
     const { getByText } = render(<Activities />);
     await waitFor(() => {
-      expect(getByText(/Error while fetching activities/i)).toBeInTheDocument();
-      expect(getByText(/Internal Mock Error/i)).toBeInTheDocument();
+      expect(getByText(/We had a problem while looking/)).toBeInTheDocument();
+      expect(getByText(/Internal Mock Error/)).toBeInTheDocument();
     });
   });
 });

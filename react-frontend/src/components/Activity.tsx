@@ -32,12 +32,14 @@ const Activities: React.FC = () => {
 
       <div className="activities__container">
         {error ? (
-          <>
-            Error while fetching activities. Please try again later.
-            <small>{error.toString()}</small>
-          </>
+          <span>
+            We had a problem while looking for activities. Please try again
+            later. <pre>{error.toString()}</pre>
+          </span>
         ) : activities.length === 0 ? (
-          <>No activities found. Please refine your search and try again.</>
+          <span>
+            No activities found. Please refine your search and try again.
+          </span>
         ) : (
           activities.map((activity) => (
             <div key={activity.id} className="activities__activity">

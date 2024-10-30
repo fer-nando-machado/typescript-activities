@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`App > renders default App home 1`] = `
+exports[`App Component > renders default App home 1`] = `
 <div
   id="App"
 >

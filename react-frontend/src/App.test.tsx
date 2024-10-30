@@ -6,7 +6,7 @@ import App from "./App";
 
 vi.mock("./components/Activity");
 
-describe("App", () => {
+describe("App Component", () => {
   it("renders default App home", async () => {
     const { container } = render(<App />);
     expect(container.firstChild).toMatchSnapshot();

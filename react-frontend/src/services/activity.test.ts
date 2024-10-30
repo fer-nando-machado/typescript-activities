@@ -3,7 +3,7 @@ import { fetchActivities } from "./activity";
 import { API_URL, GET_JSON } from "../config";
 import { ACTIVITY_MOCK } from "./__mocks__/activity";
 
-describe("fetchActivities", () => {
+describe("Activity Service", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -40,8 +40,6 @@ describe("fetchActivities", () => {
       ok: false,
     });
 
-    await expect(fetchActivities()).rejects.toThrow(
-      "Error fetching activities: Internal Mock Error"
-    );
+    await expect(fetchActivities()).rejects.toThrow("Internal Mock Error");
   });
 });
