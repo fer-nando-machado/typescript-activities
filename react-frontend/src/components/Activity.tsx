@@ -8,14 +8,18 @@ const Activities: React.FC = () => {
   const [title, setTitle] = useState("");
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    fetchActivities().then(setActivities).catch(setError);
-  }, []);
+  const searchActivities = (filter = {}) => {
+    fetchActivities(filter).then(setActivities).catch(setError);
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    fetchActivities({ title }).then(setActivities);
+    searchActivities({ title });
   };
+
+  useEffect(() => {
+    searchActivities();
+  }, []);
 
   return (
     <>
@@ -44,16 +48,23 @@ const Activities: React.FC = () => {
           activities.map((activity) => (
             <div key={activity.id} className="activities__activity">
               <strong>{activity.title}</strong>
-              <data value={activity.price}>
+              <data value={activity.price} aria-label="Price">
                 {activity.currency}
                 {activity.price}
+                {activity.specialOffer && (
+                  <em className="activities__specialOffer">Special Offer 🔖</em>
+                )}
               </data>
-              Rating: {activity.rating}
-              {activity.specialOffer && "Has Special Offer!"}
+              <data value={activity.rating} aria-label="Rating">
+                {"⭐".repeat(activity.rating)} <small>{activity.rating}</small>
+              </data>
               {activity.supplier && (
                 <address>
-                  {activity.supplier.name} /{activity.supplier.city},{" "}
-                  {activity.supplier.country}, {activity.supplier.zip}
+                  {activity.supplier.name}{" "}
+                  <small>
+                    from {activity.supplier.city}, {activity.supplier.country},{" "}
+                    {activity.supplier.zip}
+                  </small>
                 </address>
               )}
             </div>
