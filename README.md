@@ -10,7 +10,7 @@ Sample TypeScript monorepo featuring a web application that allows users to sear
 
 If you have Docker installed, you can easily start both services with:
 
-```cmd
+```bash
 docker-compose up --build
 ```
 
@@ -29,7 +29,7 @@ However, I was able to salvage some resources (like the endpoint contracts for t
 
 Since my focus was on the backend side, I tried to keep the frontend style alterations to a minimal, respecting the provided SCSS structure and only appending the required styles for the new elements.
 
-In order to keep the solution evolutive, easily testable and clearly split business logic and interfaces details, I applied Clean Architecture principles to create the layers:
+In order to keep the solution evolutive, easily testable and clearly split the responsabilities of business logic and interfaces details, I applied Clean Architecture principles to create the layers:
 
 - [`api`](./node-backend/src/api): exposes the server API using Express
 - [`core`](./node-backend/src/core): handles pure business logic _(like activity filtering, supplier matching, etc...)_
@@ -37,7 +37,7 @@ In order to keep the solution evolutive, easily testable and clearly split busin
 
 For both applications, tests were written to validate both happy path and error scenarios.
 
-## Future Improvements
+## Improvements
 
 ### Functionality
 
