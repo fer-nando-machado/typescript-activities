@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ActivityDetail } from "../../../types/activity";
 import { fetchActivities } from "../services/activity";
 import "./Activity.scss";
+import Supplier from "./Supplier";
 
 const Activities: React.FC = () => {
   const [activities, setActivities] = useState<ActivityDetail[]>();
@@ -63,15 +64,7 @@ const Activities: React.FC = () => {
               <data value={activity.rating} aria-label="Rating">
                 {"⭐".repeat(activity.rating)} <small>{activity.rating}</small>
               </data>
-              {activity.supplier && (
-                <address>
-                  {activity.supplier.name}{" "}
-                  <small>
-                    from {activity.supplier.city}, {activity.supplier.country},{" "}
-                    {activity.supplier.zip}
-                  </small>
-                </address>
-              )}
+              {activity.supplier && <Supplier supplier={activity.supplier} />}
             </div>
           ))
         )}
