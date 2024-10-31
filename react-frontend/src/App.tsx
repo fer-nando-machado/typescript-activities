@@ -1,4 +1,4 @@
-import Activities from "./components/Activity";
+import ActivityContainer from "./components/Activity/ActivityContainer";
 import logo from "./assets/logo.png";
 import "./App.scss";
 
@@ -7,7 +7,7 @@ function App() {
     <div id="App">
       <img src={logo} alt="Get Your Guide" />
       <h1>Activities</h1>
-      <Activities />
+      <ActivityContainer />
     </div>
   );
 }

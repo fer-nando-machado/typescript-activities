@@ -1,10 +1,8 @@
 import "@testing-library/react";
 import "@testing-library/jest-dom";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
 import App from "./App";
-
-vi.mock("./components/Activity");
 
 describe("App Component", () => {
   it("renders default App home", async () => {

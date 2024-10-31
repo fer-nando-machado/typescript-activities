@@ -11,8 +11,27 @@ exports[`App Component > renders default App home 1`] = `
   <h1>
     Activities
   </h1>
+  <form
+    aria-label="Activity Filter"
+    class="activity__filter"
+  >
+    <input
+      aria-label="Activity Title"
+      name="title"
+      placeholder="Berlin Tour Museum Pass Ticket ..."
+      type="text"
+      value=""
+    />
+    <button
+      type="submit"
+    >
+      Search!
+    </button>
+  </form>
   <div
-    class="activities__container"
-  />
+    class="activity__container"
+  >
+    Looking for activities...
+  </div>
 </div>
 `;
