@@ -42,9 +42,9 @@ For both applications, tests were written to validate both happy path and error 
 ### Functionality
 
 - Auto-Load? _(decide if we should keep loading activities when the user first enters the page or if we should wait until the user clicks on the Search button)_
-- Navigation _(open a detailed view when clicking on the card)_
-- Pagination _(instead of returning all matching activities)_
-- Sort Options _(by price, rating, etc...)_
+- Navigation _(open a detailed view when clicking on the activity card)_
+- Pagination _(instead of returning all matching activities, return a paginated set)_
+- Sorting Options _(sort activities by price, rating, distance, etc...)_
 - Multi-Criteria Filtering _(by rating, special offer presence, price range, supplier address)_
 
 ### Performance
@@ -56,8 +56,8 @@ For both applications, tests were written to validate both happy path and error 
 
 ### Accessibility
 
-- Keyboard Navigation _(make sure all interactive elements - like the activity cards - can be navigated and selected through using the keyboard)_
 - Screen Reader _(improve ARIA attributes to improve accessibility for visually impaired users)_
+- Keyboard Navigation _(make sure all interactive elements - like the activity cards - can be navigated and selected through using the keyboard)_
 
 ### Analytics
 
@@ -66,7 +66,7 @@ For both applications, tests were written to validate both happy path and error 
 
 ### Monitoring
 
-- Logging / Alerts _(centralize log management, identify patterns and trigger alerts when needed)_
+- Logging / Alerts _(centralize log management, identify patterns and trigger automated alerts when needed)_
 
 ### Automation
 
