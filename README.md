@@ -1,6 +1,6 @@
 # typescript-activities
 
-Sample Typescript monorepo featuring a web application that allows users to search for activities, composed by the following modules:
+Sample TypeScript monorepo featuring a web application that allows users to search for activities, composed by the following modules:
 
 - [`node-backend`](./node-backend), a backend application meant to expose a REST API
 - [`react-frontend`](./react-frontend), a UI client application consuming the exposed API
