@@ -2,8 +2,8 @@
 
 Sample Typescript monorepo featuring a web application that allows users to search for activities, composed by the following modules:
 
-- [`node-backend`](./node-backend/README.md), a backend application meant to expose a REST API
-- [`react-frontend`](./react-frontend/README.md), a UI client application consuming the exposed API
+- [`node-backend`](./node-backend), a backend application meant to expose a REST API
+- [`react-frontend`](./react-frontend), a UI client application consuming the exposed API
 - [`types`](./types), a resource folder to define types shared by both applications
 
 ## Quick Start
