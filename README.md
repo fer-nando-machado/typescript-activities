@@ -71,4 +71,4 @@ For both applications, tests were written to validate both happy path and error 
 ### Automation
 
 - Continuous Integration _(ensure available automated tests are executed automatically before integrating new code)_
-- Continuous Deployment _(ensure automated deployments take place following sucessful CI checks)_
+- Continuous Deployment _(ensure automated deployments take place following successful CI checks)_
