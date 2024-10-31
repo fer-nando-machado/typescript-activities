@@ -1,6 +1,6 @@
 # typescript-activities-react-frontend
 
-React Frontend for `typescript-activities`.
+React Frontend for [`typescript-activities`](..)
 
 ## Commands
 

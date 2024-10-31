@@ -1,6 +1,6 @@
 # typescript-activities-node-backend
 
-Node API for `typescript-activities`
+Node API for [`typescript-activities`](..)
 
 ## Commands
 
