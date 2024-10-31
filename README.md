@@ -61,8 +61,8 @@ For both applications, tests were written to validate both happy path and error 
 
 ### Analytics
 
-- User Tracking _(track user behavior and preferences)_
-- Feedback _(allow users to submit feedback)_
+- User Tracking _(automatically track user behavior and preferences)_
+- Feedback _(allow users to submit direct feedback about their experience)_
 
 ### Monitoring
 
