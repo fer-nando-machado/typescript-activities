@@ -1,7 +1,4 @@
 import { getActivities } from "../core/activity";
-import { fetchActivities } from "../data/activity";
-import { fetchSuppliers } from "../data/supplier";
-import { ActivityDetail } from "../../../types/activity";
 
 jest.mock("../data/activity");
 jest.mock("../data/supplier");
