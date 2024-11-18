@@ -16,8 +16,16 @@ export const getActivities = (
     });
 };
 
-const filterByTitle = (activity: Activity, title?: string) => {
-  return title
-    ? activity.title.toLowerCase().includes(title.toLowerCase())
-    : true;
+const filterByTitle = (activity: Activity, query?: string) => {
+  if (!query) {
+    return true;
+  }
+  const keywords = query
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z]+$/, "")
+    .split(" ");
+
+  const activityTitle = activity.title.toLowerCase();
+  return keywords.every((keyword) => activityTitle.includes(keyword));
 };
